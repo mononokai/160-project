@@ -1,4 +1,4 @@
--- Active: 1677500785362@@127.0.0.1@3306@boatdb
+-- Active: 1676509760673@@127.0.0.1@3306
 
 # Working on writing cleaner MySQL queries and better comments
 # Initializing the Database

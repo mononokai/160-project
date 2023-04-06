@@ -24,7 +24,7 @@
         <td>{{ exam.question2 }}</td>
         <td>{{ exam.question3 }}</td>
         <td>{{ exam.question4 }}</td>
-        <td><a href="/exam_page">Start Exam</a></td>
+        <td><a href="{{ url_for('exam_page', exam_id=exam.exam_id) }}">Start Exam</a></td>
     </tr>
     {% endfor %}
 </table>

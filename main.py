@@ -14,7 +14,6 @@ connection = engine.connect()
 
 
 # Routes
-
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -135,20 +134,19 @@ def delete_exam():
     return render_template('delete_exam.html')
 
 
-@app.route('/exam_page/', methods=['POST'])
-def exam_page():
+@app.route('/exam_page/<int:exam_id>/', methods=['GET', 'POST'])
+def exam_page(exam_id):
+    exam = connection.execute(text("SELECT * FROM exam WHERE exam_id=:exam_id"), {"exam_id": exam_id}).fetchone()
+    if not exam:
+        flash('Invalid Exam ID', 'error')
+        return redirect(url_for('all_exams'))
+
     if request.method == 'POST':
-        exam_id = request.form['exam_id']
-        exam = connection.execute(text("SELECT * FROM exam WHERE exam_id=:exam_id"), {"exam_id": exam_id}).fetchone()
+        flash('Your exam has been submitted successfully!', 'success')
+        return redirect(url_for('all_exams'))
 
-        if exam:
-            flash('Exam submitted!', 'success')
-            return render_template('exam_page.html', exam=exam)
-        else:
-            flash('Invalid Exam ID', 'error')
-            return redirect(url_for('all_exams'))
-    render_template('exam_page.html')
 
+    return render_template('exam_page.html', exam=exam)
 
 
 # Run Flask App
