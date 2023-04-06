@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for msg in messages %}
+            <p>{{ msg }}</p>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Examagram</h1>
+            <p>Examagram is a web app that helps instructors provide exams remotely!</p>
+
+            <h2>How to use Examagram as an instructor</h2>
+            <ol>
+                <li>Create an exam</li>
+                <li>Share the exam with your students</li>
+                <li>Students take the exam</li>
+                <li>Instructors can view the results</li>
+            </ol>
+</div>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for msg in messages %}
+            <p>{{ msg }}</p>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+<div class="container">
+    <form action="#" method="GET">
+        <label for="role_filter">Filter by Role:</label>
+        <select name="role_filter" id="role_filter">
+            <option value="all">All</option>
+            <option value="teacher">Teacher</option>
+            <option value="student">Student</option>
+        </select>
+        <button type="submit">Filter</button>
+    </form>
+    <table class="accounts_table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Role</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for teacher in teachers %}
+                {% if role_filter == "all" or role_filter == "teacher" %}
+                    <tr>
+                        <td>{{ teacher.name.capitalize() }}</td>
+                        <td>Teacher</td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+            {% for student in students %}
+                {% if role_filter == "all" or role_filter == "student" %}
+                    <tr>
+                        <td>{{ student.name.capitalize() }}</td>
+                        <td>Student</td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+    </table>
+</div>
+{% endblock %}

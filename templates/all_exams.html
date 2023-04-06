@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for msg in messages %}
+            <p>{{ msg }}</p>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+<table>
+    <tr>
+        <th>Exam Id</th>
+        <th>Teacher Id</th>    
+        <th>Question 1</th>
+        <th>Question 2</th>
+        <th>Question 3</th>
+        <th>Question 4</th>
+    </tr>
+    {% for exam in exams %}
+    <tr>
+        <td>{{ exam.exam_id }}</td>
+        <td>{{ exam.teacher_id }}</td>
+        <td>{{ exam.question1 }}</td>
+        <td>{{ exam.question2 }}</td>
+        <td>{{ exam.question3 }}</td>
+        <td>{{ exam.question4 }}</td>
+        <td><a href="/exam_page">Start Exam</a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

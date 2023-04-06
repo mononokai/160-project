@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for msg in messages %}
+            <p>{{ msg }}</p>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+<form method="POST" action="{{ url_for('delete_exam') }}">
+    <label for="exam_id">Enter the Exam ID:</label>
+    <input type="number" name="exam_id">
+    <input type="submit" value="Delete Exam">
+</form>
+
+{% endblock %}

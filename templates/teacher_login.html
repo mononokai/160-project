@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for msg in messages %}
+            <p>{{ msg }}</p>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+    <div class="container">
+        <form action="#" method="post">
+            <label for="teacher_name"></label>
+            <input type="text" name="teacher_name" placeholder="Enter your name">
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+{% endblock %}

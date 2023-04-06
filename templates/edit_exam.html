@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for msg in messages %}
+            <p>{{ msg }}</p>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+<form action="" method="POST">
+    <label for="exam_id">Exam ID</label>
+    <input type="text" name="exam_id" id="exam_id">
+    <label for="teacher_id">Teacher ID</label>
+    <input type="text" name="teacher_id" id="teacher_id">
+    <label for="question1" >Question 1</label>
+    <input type="text" name="question1" id="question1">
+    <label for="question2" >Question 2</label>
+    <input type="text" name="question2" id="question2">
+    <label for="question3" >Question 3</label>
+    <input type="text" name="question3" id="question3">
+    <label for="question4" >Question 4</label>
+    <input type="text" name="question4" id="question4">
+    <input type="submit" value="Update Exam">
+</form>
+{% endblock %}

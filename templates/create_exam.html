@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for msg in messages %}
+            <p>{{ msg }}</p>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+<div class="container">
+    <form method="post" class="exam_form">
+        
+        <label for="question1">Question 1:</label>
+        <input type="text" name="question1" placeholder="Enter question" required>
+
+        <label for="question2">Question 2:</label>
+        <input type="text" name="question2" placeholder="Enter question" required>
+
+        <label for="question3">Question 3:</label>
+        <input type="text" name="question3" placeholder="Enter question" required>
+
+        <label for="question4">Question 4:</label>
+        <input type="text" name="question4" placeholder="Enter question" required>
+
+        <input type="submit" value="Submit">
+    </form>
+</div>
+{% endblock %}
